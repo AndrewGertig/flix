@@ -31,7 +31,7 @@ module Flix
         # # Checks for files in the payload
         # builder.use Faraday::Request::Multipart
         
-        builder.use Faraday::Request::OAuth, Flix::Default.options
+        builder.use Faraday::Request::OAuth, Flix::Configurable.keys
         # Convert request params to "www-form-urlencoded"
         builder.use Faraday::Request::UrlEncoded
         # Handle 4xx server responses
