@@ -2,11 +2,16 @@
 require File.expand_path('../lib/flix/version', __FILE__)
 
 Gem::Specification.new do |gem|
+  gem.add_dependency 'faraday', '~> 0.8'
+  gem.add_dependency 'faraday_middleware', '~> 0.8'
+  
+  gem.add_development_dependency 'json'
+    
   gem.authors       = ["Andrew Gertig"]
   gem.email         = ["andrew@otherscreen.com"]
-  gem.description   = %q{API wrapper}
-  gem.summary       = %q{Walking through the process of creating an API client}
-  gem.homepage      = ""
+  gem.description   = %q{A Ruby wrapper for the API}
+  gem.summary       = %q{API client}
+  gem.homepage      = "https://github.com/AndrewGertig/flix"
 
   gem.files         = `git ls-files`.split($\)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
