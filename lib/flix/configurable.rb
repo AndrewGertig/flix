@@ -10,7 +10,7 @@ module Flix
       def keys
         @keys ||= [
           :consumer_key,
-          :consumer_secret, 
+          :consumer_secret,
           :oauth_token,
           :oauth_token_secret,
           :endpoint,
