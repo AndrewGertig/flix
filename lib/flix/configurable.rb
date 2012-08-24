@@ -3,9 +3,8 @@ require 'flix/default'
 module Flix
   module Configurable
     attr_writer :consumer_key, :consumer_secret, :oauth_token, :oauth_token_secret
-    attr_accessor :endpoint, :connection_options, :middleware
-    # attr_accessor :media_endpoint, :search_endpoint, :identity_map
-
+    attr_accessor :endpoint, :connection_options, :middleware,  :identity_map
+    # attr_accessor :media_endpoint, :search_endpoint,
     class << self
 
       def keys
@@ -17,7 +16,7 @@ module Flix
           :endpoint,
           :connection_options,
           :middleware,
-          # :identity_map,
+          :identity_map,
           # :media_endpoint,
           # :search_endpoint,
         ]

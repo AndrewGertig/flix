@@ -2,9 +2,17 @@ require 'faraday'
 require 'faraday_middleware'
 require 'flix/configurable'
 
+require 'multi_json'
+require 'flix/api'
+# require 'twitter/error/client_error'
+# require 'twitter/error/decode_error'
+# require 'twitter/rate_limit'
+require 'simple_oauth'
+require 'uri'
 module Flix
   
   class Client
+    include Flix::API
     include Flix::Configurable
 
     # Initializes a new Client object
@@ -54,11 +62,14 @@ module Flix
       uri = URI(uri) unless uri.respond_to?(:host)
       uri += path
       request_headers = {}
+      
       if credentials?
         authorization = auth_header(method, uri, params)
         request_headers[:authorization] = authorization.to_s
       end
+      
       connection.url_prefix = options[:endpoint] || @endpoint
+      
       response = connection.run_request(method.to_sym, path, nil, request_headers) do |request|
         unless params.empty?
           case request.method
@@ -70,13 +81,17 @@ module Flix
         end
         yield request if block_given?
       end.env
-      @rate_limit.update(response[:response_headers])
+      
+      # @rate_limit.update(response[:response_headers])
+      
       response
       
     rescue Faraday::Error::ClientError
-      raise Flix::Error::ClientError
-    # rescue MultiJson::DecodeError
-    #   raise Flix::Error::DecodeError
+      # raise Flix::Error::ClientError
+      raise "Faraday Oops".to_yaml
+    rescue MultiJson::DecodeError
+      # raise Flix::Error::DecodeError
+      raise "MultiJson Oops".to_yaml
     end
 
     def auth_header(method, uri, params={})
