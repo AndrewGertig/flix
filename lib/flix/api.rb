@@ -1,13 +1,13 @@
-# require 'twitter/user'
+# require 'flix/user'
 
-module Twitter
+module Flix
   module API
     
     # def user(*args)
     #   options = args.extract_options!
     #   if user = args.pop
     #     options.merge_user!(user)
-    #     object_from_response(Twitter::User, :get, "/1/users/show.json", options)
+    #     object_from_response(Flix::User, :get, "/1/users/show.json", options)
     #   end
     # end
     
