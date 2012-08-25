@@ -9,10 +9,11 @@ require 'flix/configurable'
 # require 'twitter/rate_limit'
 require 'simple_oauth'
 require 'uri'
+
 module Flix
   
   class Client
-    include Flix::API
+    # include Flix::API
     include Flix::Configurable
 
     # Initializes a new Client object
