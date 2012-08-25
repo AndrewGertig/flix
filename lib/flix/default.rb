@@ -1,37 +1,24 @@
-require 'faraday'
+require 'faraday_middleware'
 require 'flix/configurable'
-# require 'flix/error/client_error'
-# require 'flix/error/server_error'
-require 'flix/identity_map'
-# require 'flix/request/multipart_with_file'
-# require 'flix/response/parse_json'
-# require 'flix/response/raise_error'
+# require 'flix/identity_map'
 require 'flix/version'
 
 module Flix
   module Default
     ENDPOINT = 'http://api.netflix.com' unless defined? ENDPOINT
-    # MEDIA_ENDPOINT = 'https://upload.flix.com' unless defined? MEDIA_ENDPOINT
-    # SEARCH_ENDPOINT = 'https://search.flix.com' unless defined? SEARCH_ENDPOINT
     CONNECTION_OPTIONS = {
       :headers => {
         :accept => 'application/json',
         :user_agent => "Flix Ruby Gem #{Flix::VERSION}"
       },
-      :open_timeout => 5,
-      :raw => true,
-      :ssl => {:verify => false},
-      :timeout => 10,
+      # :open_timeout => 5,
+      # :raw => true,
+      # :ssl => {:verify => false},
+      # :timeout => 10,
     } unless defined? CONNECTION_OPTIONS
-    IDENTITY_MAP = Flix::IdentityMap unless defined? IDENTITY_MAP
+    # IDENTITY_MAP = Flix::IdentityMap unless defined? IDENTITY_MAP
     MIDDLEWARE = Faraday::Builder.new(
       &Proc.new do |builder|
-        # # Convert file uploads to Faraday::UploadIO objects
-        # builder.use Flix::Request::MultipartWithFile
-        # # Checks for files in the payload
-        # builder.use Faraday::Request::Multipart
-        
-
         # Convert request params to "www-form-urlencoded"
         builder.use Faraday::Request::UrlEncoded
         # Handle 4xx server responses
@@ -99,7 +86,7 @@ module Flix
 
       # @return [Flix::IdentityMap]
       def identity_map
-        IDENTITY_MAP
+        # IDENTITY_MAP
       end
 
       # @note Faraday's middleware stack implementation is comparable to that of Rack middleware.  The order of middleware is important: the first middleware on the list wraps all others, while the last middleware is the innermost one.

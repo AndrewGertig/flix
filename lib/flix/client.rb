@@ -1,12 +1,7 @@
-require 'faraday'
 require 'faraday_middleware'
-
 require 'multi_json'
 require 'flix/api'
 require 'flix/configurable'
-# require 'twitter/error/client_error'
-# require 'twitter/error/decode_error'
-# require 'twitter/rate_limit'
 require 'simple_oauth'
 require 'uri'
 
