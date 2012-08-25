@@ -16,10 +16,20 @@ module Flix
     # @param options [Hash]
     # @return [Flix::Client]
     def initialize(options={})
+      options = Flix.options.merge(options)
       Flix::Configurable.keys.each do |key|
-        instance_variable_set(:"@#{key}", options[key] || Flix.instance_variable_get(:"@#{key}"))
+        # instance_variable_set(:"@#{key}", options[key] || Flix.instance_variable_get(:"@#{key}"))
+        send("#{key}=", options[key])
       end
     end
+    
+    # # Creates a new API
+    # def initialize(options={})
+    #   options = Instapaper.options.merge(options)
+    #   Configuration::VALID_OPTIONS_KEYS.each do |key|
+    #     send("#{key}=", options[key])
+    #   end
+    # end
 
     # Perform an HTTP DELETE request
     def delete(path, params={}, options={})

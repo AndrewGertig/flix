@@ -1,5 +1,7 @@
 # -*- encoding: utf-8 -*-
-require File.expand_path('../lib/flix/version', __FILE__)
+# require File.expand_path('../lib/flix/version', __FILE__)
+require File.expand_path('../lib', __FILE__)
+require "flix/version"
 
 Gem::Specification.new do |gem|
   # gem.add_dependency 'faraday', '~> 0.8'
