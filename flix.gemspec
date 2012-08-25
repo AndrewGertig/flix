@@ -1,6 +1,8 @@
 # -*- encoding: utf-8 -*-
 # require File.expand_path('../lib/flix/version', __FILE__)
-require File.expand_path('../lib', __FILE__)
+$:.push File.expand_path("../lib", __FILE__)
+# require "instapaper/version"
+# require File.expand_path('../lib', __FILE__)
 require "flix/version"
 
 Gem::Specification.new do |gem|
