@@ -30,4 +30,6 @@ module Flix
   end
 end
 
+puts "FLIX TIME USA"
+
 Flix.setup
