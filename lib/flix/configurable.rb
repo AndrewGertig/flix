@@ -2,8 +2,8 @@
 
 module Flix
   module Configurable
-    # attr_writer :consumer_key, :consumer_secret, :oauth_token, :oauth_token_secret
-    # attr_accessor :endpoint, :connection_options, :middleware,  :identity_map
+    attr_writer :consumer_key, :consumer_secret, :oauth_token, :oauth_token_secret
+    attr_accessor :endpoint, :connection_options, :middleware,  :identity_map, :user_agent
     # attr_accessor :media_endpoint, :search_endpoint
 
     # By default, don't set an application key
