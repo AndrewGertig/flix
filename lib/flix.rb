@@ -5,6 +5,10 @@ module Flix
   class << self
     include Flix::Configurable
     
+    def self.fake
+      "I'm just a fake method"
+    end
+    
     # Alias for Flix::Client.new (via Instapaper gem)
     #
     # @return [Flix::Client]
