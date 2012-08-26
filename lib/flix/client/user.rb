@@ -4,20 +4,16 @@ module Flix
     module User
       
       def user(*args)
+        puts "Go get a Netflix User"
         options = args.extract_options!
         if netflix_uid = args.pop
           url = "/users/#{netflix_uid}"
 
           response = from_response(:get, url, {output: "json"}, options)
+          
+          puts "the User Response: #{response}"
 
-          puts "RECEIVED FROM NETFLIX"
-          puts "-------------HEADERS-----------------"
-          puts "#{response.headers}"
-          puts "----------------BODY--------------"
-          puts "#{response.body}"
-          puts "----------------------------------"
-
-          return response.body
+          return response
         end
       end
       
