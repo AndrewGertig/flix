@@ -28,9 +28,10 @@ module Flix
       #   body = basic(user, "queues/disc")
       # end
 
-      def instant_queue(user)
-        body = JSON.parse(base_user_request("queues/instant"))
-        body["queue"]["queue_item"]
+      def instant_queue
+        # body = JSON.parse(base_user_request("queues/instant"))
+        # body["queue"]["queue_item"]
+        base_user_request("queues/instant")
       end
 
       # def self.basic(user, category)
