@@ -1,4 +1,4 @@
-require 'instapaper/version'
+require 'flix/version'
 
 module Flix
   module Configuration
