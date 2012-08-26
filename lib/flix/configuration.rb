@@ -10,8 +10,7 @@ module Flix
       :endpoint,
       :oauth_token,
       :oauth_token_secret,
-      # :version,
-      # :path_prefix,
+      :version,
       :uid,
       :user_agent,
       :connection_options].freeze
@@ -31,18 +30,13 @@ module Flix
     DEFAULT_ENDPOINT = 'http://api.netflix.com'.freeze
 
     # The version of the API.
-    # DEFAULT_VERSION = '1'
-
-    # DEFAULT_PATH_PREFIX = 'api/' + DEFAULT_VERSION + '/'
+    DEFAULT_VERSION = '1'
 
     # By default, don't set a user oauth token
     DEFAULT_OAUTH_TOKEN = nil
 
     # By default, don't set a user oauth secret
     DEFAULT_OAUTH_TOKEN_SECRET = nil
-
-    # By default, don't use a proxy server
-    # DEFAULT_PROXY = nil
     
     # By default, don't set a user's netflix uid
     DEFAULT_NETFLIX_UID = nil
@@ -80,6 +74,7 @@ module Flix
       self.endpoint           = DEFAULT_ENDPOINT
       self.oauth_token        = DEFAULT_OAUTH_TOKEN
       self.oauth_token_secret = DEFAULT_OAUTH_TOKEN_SECRET
+      self.version            = DEFAULT_VERSION
       self.uid                = DEFAULT_NETFLIX_UID
       self.user_agent         = DEFAULT_USER_AGENT
       self.connection_options = DEFAULT_CONNECTION_OPTIONS

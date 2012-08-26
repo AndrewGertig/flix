@@ -9,7 +9,6 @@ module Flix
     attr_accessor *Configuration::VALID_OPTIONS_KEYS
 
     alias :api_endpoint :endpoint
-    # alias :api_version :version
 
     # Creates a new API
     def initialize(options={})
@@ -20,8 +19,7 @@ module Flix
     end
     
     def base_user_request(resource)
-      url = "/users/#{uid}/#{resource}"
-      response = from_response(:get, url, {output: "json"}, {})
+      response = from_response(:get, "/users/#{uid}/#{resource}", {output: "json"}, {})
       return response
     end
 
@@ -34,13 +32,9 @@ module Flix
     # Client-namespaced.
     require 'flix/client/disc'
     require 'flix/client/user'
-    # require 'flix/client/bookmark'
-    # require 'flix/client/folder'
 
     include Flix::Client::Disc
     include Flix::Client::User
-    # include Flix::Client::Bookmark
-    # include Flix::Client::Folder
     
     
 private
