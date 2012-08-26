@@ -2,34 +2,25 @@ require 'flix/configuration'
 require 'flix/client'
 
 module Flix
-    extend Configuration
-    
-    def fake
-      "class << self means I don't have to call self on Class level modules, they all get it. Calling self.client is actually for an instance"
-    end
-    
-    # Alias for Flix::Client.new (via Instapaper gem)
-    #
-    # @return [Flix::Client]
-    def self.client(options={})
-      Flix::Client.new(options)
-    end
+  extend Configuration
 
-    # Delegate to Flix::Client
-    def self.method_missing(method, *args, &block)
-      return super unless client.respond_to?(method)
-      client.send(method, *args, &block)
-    end
+  # Alias for Flix::Client.new
+  #
+  # @return [Flix::Client]
+  def self.client(options={})
+    Flix::Client.new(options)
+  end
 
-    def self.respond_to?(method, include_private = false)
-      client.respond_to?(method, include_private) || super(method, include_private)
-    end
+  # Delegate to Flix::Client
+  def self.method_missing(method, *args, &block)
+    return super unless client.respond_to?(method)
+    client.send(method, *args, &block)
+  end
 
-    # Custom error class for rescuing from all Flix errors
-    class Error < StandardError; end
-  
-  puts "FLIX TIME USA"
+  def self.respond_to?(method, include_private = false)
+    client.respond_to?(method, include_private) || super(method, include_private)
+  end
+
+  # Custom error class for rescuing from all Flix errors
+  class Error < StandardError; end
 end
-
-Flix.reset #set defaults
-# Flix.setup

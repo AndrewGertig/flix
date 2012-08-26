@@ -14,7 +14,7 @@ module Flix
         },
         :proxy => proxy,
         :ssl => {:verify => false},
-        :url => endpoint
+        :url => api_endpoint
       })
 
       Faraday.new(merged_options) do |builder|
