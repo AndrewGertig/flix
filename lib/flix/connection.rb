@@ -12,7 +12,7 @@ module Flix
           'Accept' => "application/json",
           'User-Agent' => user_agent
         },
-        :proxy => proxy,
+        # :proxy => proxy,
         :ssl => {:verify => false},
         :url => api_endpoint
       })

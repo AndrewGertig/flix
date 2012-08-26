@@ -10,7 +10,6 @@ module Flix
       :endpoint,
       :oauth_token,
       :oauth_token_secret,
-      # :proxy,
       # :version,
       # :path_prefix,
       :user_agent,

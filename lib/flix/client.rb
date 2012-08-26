@@ -20,7 +20,7 @@ module Flix
     end
 
     def endpoint_with_prefix
-      api_endpoint + path_prefix
+      api_endpoint # + path_prefix
     end
 
     include Connection
