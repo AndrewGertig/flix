@@ -58,7 +58,7 @@ module Flix
           uri += path
           request_headers = {}
 
-          if credentials?
+          if authenticated?
             authorization = auth_header(method, uri, params)
             request_headers[:authorization] = authorization.to_s
           end
