@@ -9,7 +9,7 @@ module Flix
     attr_accessor *Configuration::VALID_OPTIONS_KEYS
 
     alias :api_endpoint :endpoint
-    alias :api_version :version
+    # alias :api_version :version
 
     # Creates a new API
     def initialize(options={})
