@@ -4,7 +4,7 @@ module Flix
   module Configuration
     # An array of valid keys in the options hash when configuring a {Flix::API}
     VALID_OPTIONS_KEYS = [
-      # :# adapter,
+      :adapter,
       :consumer_key,
       :consumer_secret,
       :endpoint,
