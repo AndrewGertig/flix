@@ -1,55 +1,29 @@
 require 'faraday_middleware'
 require 'multi_json'
 require 'flix/api'
-require 'flix/configurable'
+require 'flix/configuration'
 require 'simple_oauth'
 require 'uri'
 
 module Flix
-  
+  # Wrapper for the Netflix REST API
   class Client
+    # @private
+    attr_accessor *Configuration::VALID_OPTIONS_KEYS
+    
     include Flix::API
-    include Flix::Configurable
+    include Flix::Configuration
 
-    # Initializes a new Client object
+    # Initializes a new Client object / creates a new API
     #
     # @param options [Hash]
     # @return [Flix::Client]
     def initialize(options={})
-      puts "Initialize the Flix Client"
+      puts "Initialize the Flix Client!!!!!!!!!"
       options = Flix.options.merge(options)
-      Flix::Configurable.keys.each do |key|
-        # instance_variable_set(:"@#{key}", options[key] || Flix.instance_variable_get(:"@#{key}"))
+      Configuration::VALID_OPTIONS_KEYS.each do |key|
         send("#{key}=", options[key])
       end
-    end
-    
-    # # Creates a new API
-    # def initialize(options={})
-    #   options = Instapaper.options.merge(options)
-    #   Configuration::VALID_OPTIONS_KEYS.each do |key|
-    #     send("#{key}=", options[key])
-    #   end
-    # end
-
-    # Perform an HTTP DELETE request
-    def delete(path, params={}, options={})
-      request(:delete, path, params, options)
-    end
-
-    # Perform an HTTP GET request
-    def get(path, params={}, options={})
-      request(:get, path, params, options)
-    end
-
-    # Perform an HTTP POST request
-    def post(path, params={}, options={})
-      request(:post, path, params, options)
-    end
-
-    # Perform an HTTP UPDATE request
-    def put(path, params={}, options={})
-      request(:put, path, params, options)
     end
 
   private
@@ -59,6 +33,18 @@ module Flix
     # @return [Faraday::Connection]
     def connection
       @connection ||= Faraday.new(@endpoint, @connection_options.merge(:builder => @middleware))
+    end
+    
+    # Authentication hash
+    #
+    # @return [Hash]
+    def authentication
+      {
+        :consumer_key => consumer_key,
+        :consumer_secret => consumer_secret,
+        :token => oauth_token,
+        :token_secret => oauth_token_secret
+      }
     end
 
     # Perform an HTTP request

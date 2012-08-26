@@ -1,5 +1,5 @@
 require 'faraday_middleware'
-require 'flix/configurable'
+require 'flix/configuration'
 # require 'flix/identity_map'
 require 'flix/version'
 
@@ -36,7 +36,7 @@ module Flix
 
       # @return [Hash]
       def options
-        Hash[Flix::Configurable.keys.map{|key| [key, send(key)]}]
+        Hash[Flix::Configuration.keys.map{|key| [key, send(key)]}]
       end
 
       # @return [String]
@@ -59,7 +59,7 @@ module Flix
         ENV['NETFLIX_OAUTH_TOKEN_SECRET']
       end
 
-      # @note This is configurable in case you want to use HTTP instead of HTTPS or use a Netflix-compatible endpoint.
+      # @note This is configuration in case you want to use HTTP instead of HTTPS or use a Netflix-compatible endpoint.
       # @see http://status.net/wiki/Flix-compatible_API
       # @see http://en.blog.wordpress.com/2009/12/12/flix-api/
       # @see http://staff.tumblr.com/post/287703110/api
