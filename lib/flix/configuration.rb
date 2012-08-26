@@ -4,7 +4,7 @@ module Flix
   module Configuration
     # An array of valid keys in the options hash when configuring a {Flix::API}
     VALID_OPTIONS_KEYS = [
-      :adapter,
+      # :# adapter,
       :consumer_key,
       :consumer_secret,
       :endpoint,
@@ -12,6 +12,7 @@ module Flix
       :oauth_token_secret,
       # :version,
       # :path_prefix,
+      :uid,
       :user_agent,
       :connection_options].freeze
 
@@ -42,6 +43,9 @@ module Flix
 
     # By default, don't use a proxy server
     # DEFAULT_PROXY = nil
+    
+    # By default, don't set a user's netflix uid
+    DEFAULT_NETFLIX_UID = nil
 
     # The user agent that will be sent to the API endpoint if none is set
     DEFAULT_USER_AGENT = "Flix Ruby Gem #{Flix::VERSION}".freeze
@@ -76,6 +80,7 @@ module Flix
       self.endpoint           = DEFAULT_ENDPOINT
       self.oauth_token        = DEFAULT_OAUTH_TOKEN
       self.oauth_token_secret = DEFAULT_OAUTH_TOKEN_SECRET
+      self.uid                = DEFAULT_NETFLIX_UID
       self.user_agent         = DEFAULT_USER_AGENT
       self.connection_options = DEFAULT_CONNECTION_OPTIONS
       self

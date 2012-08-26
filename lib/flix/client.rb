@@ -18,9 +18,19 @@ module Flix
         send("#{key}=", options[key])
       end
     end
+    
+    def base_user_request(resource)
+      
+      url = "/users/#{uid}/#{resource}"
 
-    def endpoint_with_prefix
-      api_endpoint # + path_prefix
+      response = from_response(:get, url, {output: "json"}, nil)
+      # 
+      # response = client.get do |req|
+      #   req.url url
+      #   req.params['output'] = "json"
+      # end
+
+      return response
     end
 
     include Connection
@@ -30,14 +40,21 @@ module Flix
     # Require client method modules after initializing the Client class in
     # order to avoid a superclass mismatch error, allowing those modules to be
     # Client-namespaced.
-    require 'flix/client/account'
+    require 'flix/client/disc'
     require 'flix/client/user'
-    require 'flix/client/bookmark'
-    require 'flix/client/folder'
+    # require 'flix/client/bookmark'
+    # require 'flix/client/folder'
 
-    include Flix::Client::Account
+    include Flix::Client::Disc
     include Flix::Client::User
-    include Flix::Client::Bookmark
-    include Flix::Client::Folder
+    # include Flix::Client::Bookmark
+    # include Flix::Client::Folder
+    
+    
+private
+
+    def from_response(request_method, url, params={}, options={})
+     response = send(request_method.to_sym, url, params, options)
+    end
   end
 end
