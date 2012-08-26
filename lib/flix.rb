@@ -2,11 +2,12 @@ require 'flix/client'
 require 'flix/configurable'
 
 module Flix
+  
   class << self
     include Flix::Configurable
     
-    def self.fake
-      "I'm just a fake method"
+    def fake
+      "class << self means I don't have to call self on Class level modules, they all get it. Calling self.client is actually for an instance"
     end
     
     # Alias for Flix::Client.new (via Instapaper gem)

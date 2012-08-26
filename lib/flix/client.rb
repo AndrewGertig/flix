@@ -16,6 +16,7 @@ module Flix
     # @param options [Hash]
     # @return [Flix::Client]
     def initialize(options={})
+      puts "Initialize the Flix Client"
       options = Flix.options.merge(options)
       Flix::Configurable.keys.each do |key|
         # instance_variable_set(:"@#{key}", options[key] || Flix.instance_variable_get(:"@#{key}"))

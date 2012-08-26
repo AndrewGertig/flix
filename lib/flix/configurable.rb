@@ -48,6 +48,7 @@ module Flix
 
     # Convenience method to allow configuration options to be set in a block
     def configure
+      puts "Configure the Flix Client"
       yield self
     end
 
