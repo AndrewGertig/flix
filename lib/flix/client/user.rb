@@ -6,7 +6,7 @@ module Flix
       def user
         url = "/users/#{uid}"
         puts "Get User from url: #{url}"
-        response = from_response(:get, url, {output: "json"}, nil)
+        response = from_response(:get, url, {output: "json"}, {})
       end
       
   private

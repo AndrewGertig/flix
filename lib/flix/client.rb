@@ -20,16 +20,8 @@ module Flix
     end
     
     def base_user_request(resource)
-      
       url = "/users/#{uid}/#{resource}"
-
-      response = from_response(:get, url, {output: "json"}, nil)
-      # 
-      # response = client.get do |req|
-      #   req.url url
-      #   req.params['output'] = "json"
-      # end
-
+      response = from_response(:get, url, {output: "json"}, {})
       return response
     end
 
