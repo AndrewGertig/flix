@@ -9,15 +9,8 @@ module Flix
         # puts "get this URL #{url}"
         
         response = from_response(:get, url, {output: "json"}, options)
-
-        puts "RECEIVED FROM NETFLIX"
-        puts "-------------HEADERS-----------------"
-        puts "#{response.headers}"
-        puts "----------------BODY--------------"
-        puts "#{response.body}"
-        puts "----------------------------------"
-
-        return response.body
+        puts "The Response from User #{response}"
+        return response
       end
     end
     
