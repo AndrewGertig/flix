@@ -31,7 +31,8 @@ module Flix
       def instant_queue
         # body = JSON.parse(base_user_request("queues/instant"))
         # body["queue"]["queue_item"]
-        base_user_request("queues/instant")
+        res = base_user_request("queues/instant")
+        res[:body]["queue"]["queue_item"]
       end
 
       # def self.basic(user, category)
