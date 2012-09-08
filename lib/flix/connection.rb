@@ -15,8 +15,6 @@ module Flix
         :url => api_endpoint
       })
       
-      puts "Faraday should use consumer_tokens if not a User: #{consumer_tokens}"
-
       Faraday.new(merged_options) do |builder|
         if authenticated?
           builder.use Faraday::Request::OAuth, authentication
