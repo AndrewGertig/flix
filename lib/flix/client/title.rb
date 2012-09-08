@@ -14,7 +14,7 @@ module Flix
       end
       
       def expanded_search(term)
-        res = base_search({term: term, expand: "@title,@box_art")
+        res = base_search({term: term, expand: "@title,@box_art"})
         res[:body]
       end
       
