@@ -17,6 +17,11 @@ module Flix
         res = base_search({term: term, expand: "@title,@box_art")
         res[:body]
       end
+      
+      def movie(movie_id)
+        res = base_movie(movie_id: movie_id)
+        res[:body]
+      end
 
     end
   end
