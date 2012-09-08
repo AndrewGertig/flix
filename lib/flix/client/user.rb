@@ -8,7 +8,7 @@ module Flix
         response[:body]["user"]
       end
       
-  private
+      private
 
       def from_response(request_method, url, params={}, options={})
        response = send(request_method.to_sym, url, params, options)

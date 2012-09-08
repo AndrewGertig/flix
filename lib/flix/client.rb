@@ -22,6 +22,13 @@ module Flix
       response = from_response(:get, "/users/#{uid}/#{resource}", {output: "json"}, {})
       return response
     end
+    
+    def base_search(params)
+      response = from_response(:get, "/catalog/titles", {output: "json"}.merge(params), {})
+      return response
+    end
+    
+    
 
     include Connection
     include Request
@@ -32,9 +39,11 @@ module Flix
     # Client-namespaced.
     require 'flix/client/disc'
     require 'flix/client/user'
+    require 'flix/client/title'
 
     include Flix::Client::Disc
     include Flix::Client::User
+    include Flix::Client::Title
     
     
 private
