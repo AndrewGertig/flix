@@ -14,6 +14,8 @@ module Flix
         :ssl => {:verify => false},
         :url => api_endpoint
       })
+      
+      puts "Faraday should use consumer_tokens if not a User: #{consumer_tokens}"
 
       Faraday.new(merged_options) do |builder|
         if authenticated?

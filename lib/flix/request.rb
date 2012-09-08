@@ -45,6 +45,7 @@ module Flix
       uri = options[:endpoint] || @endpoint
       uri = URI(uri) unless uri.respond_to?(:host)
       uri += path
+
       request_headers = {}
 
       if authenticated?

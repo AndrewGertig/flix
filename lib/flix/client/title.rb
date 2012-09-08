@@ -3,8 +3,8 @@ module Flix
     # Defines methods related to show Titles
     module Title
       
-      def search(params)
-        res = base_search(params)
+      def search(term)
+        res = base_search(term: term)
         res[:body]
       end
 

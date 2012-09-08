@@ -24,7 +24,7 @@ module Flix
     end
     
     def base_search(params)
-      response = from_response(:get, "/catalog/titles", {output: "json"}.merge(params), {})
+      response = from_response(:get, "/catalog/titles", {output: "json", v: "2.0"}.merge(params), {})
       return response
     end
     
