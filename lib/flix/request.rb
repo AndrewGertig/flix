@@ -67,7 +67,7 @@ module Flix
         yield request if block_given?
       end.env
   
-      puts "The API response is #{response}"
+      # puts "The API response is #{response}"
       response
 
     rescue Faraday::Error::ClientError
