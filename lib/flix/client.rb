@@ -30,10 +30,13 @@ module Flix
     
     def base_movie(params)
       movie_id = params[:movie_id]
-      response = from_response(:get, "/catalog/titles/movies/#{movie_id}", {output: "json", v: "2.0"}.merge(params), {})
-      return response
+      from_response(:get, "/catalog/titles/movies/#{movie_id}", {output: "json", v: "2.0"}.merge(params), {})
     end
     
+    def base_series(params)
+      series_id = params[:series_id]
+      from_response(:get, "/catalog/titles/series/#{series_id}", {output: "json", v: "2.0"}.merge(params), {})
+    end
     
 
     include Connection
