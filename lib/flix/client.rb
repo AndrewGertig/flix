@@ -38,6 +38,17 @@ module Flix
       from_response(:get, "/catalog/titles/series/#{series_id}", {output: "json", v: "2.0"}.merge(params), {})
     end
     
+    def base_season(params)
+      series_id = params[:series_id]
+      season_id = params[:season_id]
+      from_response(:get, "/catalog/titles/series/#{series_id}/seasons/#{season_id}", {output: "json", v: "2.0"}.merge(params), {})
+    end
+    
+    def base_program(params)
+      program_id = params[:program_id]
+      from_response(:get, "/catalog/titles/programs/#{program_id}", {output: "json", v: "2.0"}.merge(params), {})
+    end
+    
 
     include Connection
     include Request

@@ -46,6 +46,12 @@ module Flix
         res = base_series(series_id: series_id, expand: expand)
         res[:body]
       end
+      
+      def program(program_id, *expands)
+        expand = "#{expands.join(',')}"
+        res = base_program(program_id: program_id, expand: expand)
+        res[:body]
+      end
 
     end
   end
