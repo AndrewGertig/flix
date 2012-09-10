@@ -13,14 +13,37 @@ module Flix
         res[:body]
       end
       
+      # Possible expand aliases
+      # *************************
+      # @title
+      # @box_art
+      # @synopsis
+      # @short_synopsis
+      # @format_availability
+      # @screen_formats
+      # @cast
+      # @directors
+      # @languages_and_audio
+      # @awards
+      # @similars
+      # @bonus_materials
+      # @seasons
+      # @episodes
+      # @discs
       def expanded_search(term)
         res = base_search({term: term, expand: "@title,@box_art"})
         res[:body]
       end
       
-      def movie(movie_id)
-        res = base_movie(movie_id: movie_id)
+      def movie(movie_id, *expands)
+        expand = "#{expands.join(',')}"
+        res = base_movie(movie_id: movie_id, expand: expand)
         res[:body]
+      end
+      
+      def series(series_id)
+        # res = base_series(series_id: series_id)
+        # res[:body]
       end
 
     end
