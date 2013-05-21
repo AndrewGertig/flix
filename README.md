@@ -26,6 +26,25 @@ In an initializer like omniauth.rb
 provider :netflix, NETFLIX_CONSUMER_KEY, NETFLIX_CONSUMER_SECRET
 ````
 
+This was in my User model user.rb
+
+````ruby
+
+def apply_netflix(auth)
+  puts "Did you Make it To NETFLIX: #{auth['info']}"
+  self.name = auth["info"]["name"]
+  self.username = auth["info"]["nickname"]
+  self.role = auth["provider"]
+                        
+  credentials = auth["credentials"]
+  authentications.build(:provider => auth["provider"], 
+                        :uid => auth["uid"],
+                        :access_token => credentials.token,
+                        :access_secret => credentials.secret)
+end
+
+````
+
 Example of creating a Class to use Flix:
 
 ````ruby
