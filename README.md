@@ -18,12 +18,12 @@ Or install it yourself as:
 
 ## Usage
 
+You can use omniauth-netflix to auth with Netflix and get a user's netflix\_key, netflix\_secret, and netflix\_uid
+
 Example of creating a Class to use Flix:
 
 ````ruby
 class NFlix
-    
-  ##### Flix Gem
   
   def self.flix_client(user)
     Flix.configure do |config|
@@ -38,6 +38,37 @@ class NFlix
   end
   
 end
+````
+
+Then you can create an instance of Flix in a controller
+
+````ruby
+@flix = NFlix.flix_client(current_user)
+````
+
+Then in a view you can access Netflix like this
+
+````ruby
+
+<% if @flix.user %>
+  <div class="row">
+    <h2>Netflix User</h2>
+    <pre>
+      <%= @flix.user["first_name"] %> <%= @flix.user["last_name"] %>
+    </pre>
+  </div>
+
+  <div class="row">
+      <h2>Netflix Instant Queue</h2>
+      <% @flix.instant_queue.each do |queue_item| %>
+        <pre>
+          <img src="<%= queue_item["box_art"]["medium"] %>">
+          <%= queue_item["title"]["short"] %>
+        </pre>
+      <% end %>
+  </div>
+<% end %>
+
 ````
 
 
