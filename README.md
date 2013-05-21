@@ -18,7 +18,29 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Example of creating a Class to use Flix:
+
+````ruby
+class NFlix
+    
+  ##### Flix Gem
+  
+  def self.flix_client(user)
+    Flix.configure do |config|
+      config.consumer_key = NETFLIX_CONSUMER_KEY
+      config.consumer_secret = NETFLIX_CONSUMER_SECRET
+      config.oauth_token = user.netflix_key
+      config.oauth_token_secret = user.netflix_secret
+      config.uid = user.netflix_uid
+    end
+    
+    return Flix
+  end
+  
+end
+````
+
+
 
 ## Contributing
 
