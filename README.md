@@ -54,7 +54,7 @@ Then you can create an instance of Flix in a controller
 
 Then in a view you can access Netflix like this
 
-````ruby
+````erb
 
 <% if @flix.user %>
   <div class="row">
