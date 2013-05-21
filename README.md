@@ -43,6 +43,18 @@ def apply_netflix(auth)
                         :access_secret => credentials.secret)
 end
 
+def netflix_key
+  authentications.where(provider: "netflix").first.access_token if authentications.where(provider: "netflix").any?
+end
+
+def netflix_secret
+  authentications.where(provider: "netflix").first.access_secret if authentications.where(provider: "netflix").any?
+end
+
+def netflix_uid
+  authentications.where(provider: "netflix").first.uid if authentications.where(provider: "netflix").any?
+end
+
 ````
 
 Example of creating a Class to use Flix:
