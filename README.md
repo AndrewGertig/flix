@@ -20,6 +20,12 @@ Or install it yourself as:
 
 You can use omniauth-netflix to auth with Netflix and get a user's netflix\_key, netflix\_secret, and netflix\_uid
 
+In an initializer like omniauth.rb
+
+````ruby
+provider :netflix, NETFLIX_CONSUMER_KEY, NETFLIX_CONSUMER_SECRET
+````
+
 Example of creating a Class to use Flix:
 
 ````ruby
